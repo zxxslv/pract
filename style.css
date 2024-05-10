@@ -1,0 +1,50 @@
+p{
+    padding: 1rem;
+    position: relative;
+    font-size: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+}
+p::before{
+    height: 100%;
+    width: 100%;
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+    opacity: .5;
+}
+p:first-child::before{
+    background-image: url(pic1.jpg);
+}
+p:nth-child(2):before{
+    background-image: url(pic2.jpg);
+}
+p:hover{
+    color: #fff;
+}
+p:hover::before{
+    opacity: 1;
+}
+p:active{
+    opacity: .75;
+}
+p{
+    transition: opacity .25s ease, color .5s ease;
+}
+p::before{
+    transition: all .5s cubic-bezier(.84,.15,.13,.79);
+}
+@keyframes bg_animations {
+    from {
+        background-position-x: 0;
+    }
+    to {
+        background-position-x: -500px;
+    }
+}
+p::before{
+    animation: bg_animations 20s infinite linear;
+    background-size: 500px auto;
+}
